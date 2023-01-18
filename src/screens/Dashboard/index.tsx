@@ -13,11 +13,19 @@ import {
 } from "./styles";
 import { HighlightCard } from "../../components/HighlightCard";
 import { HighlightCards } from "../../components/HighlightCard/styles";
+import { StatusBar } from "react-native";
+import theme from "../../global/styles/theme";
 
 export function Dashboard() {
   return (
     <Container>
       <Header>
+        <StatusBar
+          hidden={false}
+          backgroundColor={`${theme.colors.primary}`}
+          translucent={false}
+          networkActivityIndicatorVisible={true}
+        />
         <UserWrapper>
           <UserInfo>
             <Photo
@@ -33,16 +41,12 @@ export function Dashboard() {
           <Icon name="power" />
         </UserWrapper>
       </Header>
-      <HighlightCards
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{ paddingHorizontal: 24 }}
-      >
+      <HighlightCards>
         <HighlightCard
           title="Entradas"
           icon="teste"
-          amount="18000"
-          lastTransaction="Ontem"
+          amount="R$ 17.400,00"
+          lastTransaction="última entrada dia 13 de abril"
         />
         <HighlightCard
           title="Entradas"

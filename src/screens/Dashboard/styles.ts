@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { Feather } from "@expo/vector-icons";
-import theme from "../../global/styles/theme";
+import { getStatusBarHeight } from "react-native-iphone-x-helper";
 
 export const Container = styled.View`
   flex: 1;
@@ -20,6 +20,7 @@ export const UserWrapper = styled.View`
   align-items: center;
   justify-content: space-between;
   padding: 0 ${RFValue(24)}px;
+  margin-top: ${RFValue(28)}px;
 `;
 
 export const UserInfo = styled.View`

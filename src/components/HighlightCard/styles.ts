@@ -4,6 +4,7 @@ import { RFValue } from "react-native-responsive-fontsize";
 import theme from "../../global/styles/theme";
 
 export const Container = styled.View`
+  position: relative;
   height: ${RFValue(200)}px;
   width: ${RFValue(300)}px;
   padding: 19px 23px;
@@ -46,4 +47,8 @@ export const HighlightCards = styled.ScrollView.attrs({
   horizontal: true,
   showsHorizontalScrollIndicator: false,
   contentContainerStyle: { paddingHorizontal: 24 },
-})``;
+})`
+  width: 100%;
+  position: absolute;
+  margin-top: ${RFValue(130)}px;
+`;
