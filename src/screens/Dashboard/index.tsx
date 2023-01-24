@@ -44,21 +44,21 @@ export function Dashboard() {
       <HighlightCards>
         <HighlightCard
           title="Entradas"
-          icon="teste"
+          type="up"
           amount="R$ 17.400,00"
           lastTransaction="última entrada dia 13 de abril"
         />
         <HighlightCard
-          title="Entradas"
-          icon="teste"
-          amount="18000"
-          lastTransaction="Ontem"
+          title="Saídas"
+          type="down"
+          amount="R$ 1.259,00"
+          lastTransaction="Última saída dia 03 de abril"
         />
         <HighlightCard
-          title="Entradas"
-          icon="teste"
-          amount="18000"
-          lastTransaction="Ontem"
+          title="Total"
+          type="total"
+          amount="R$ 16.141,00"
+          lastTransaction="01 à 16 de abril"
         />
       </HighlightCards>
     </Container>
