@@ -10,11 +10,14 @@ import {
   UserGreeting,
   UserName,
   Icon,
+  Transactions,
+  Title,
 } from "./styles";
 import { HighlightCard } from "../../components/HighlightCard";
 import { HighlightCards } from "../../components/HighlightCard/styles";
 import { StatusBar } from "react-native";
 import theme from "../../global/styles/theme";
+import { TransactionCard } from "../../components/TransactionCard";
 
 export function Dashboard() {
   return (
@@ -61,6 +64,10 @@ export function Dashboard() {
           lastTransaction="01 à 16 de abril"
         />
       </HighlightCards>
+      <Transactions>
+        <Title>Listagem</Title>
+        <TransactionCard />
+      </Transactions>
     </Container>
   );
 }
