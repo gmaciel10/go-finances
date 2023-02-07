@@ -1,3 +1,4 @@
+import { FlatListProps } from "react-native";
 import {
   Container,
   Header,
@@ -10,19 +11,38 @@ import {
   Date,
 } from "./styles";
 
-export function TransactionCard() {
+interface Category {
+  name: string;
+  icon: string;
+}
+
+export interface TransactionCardProps {
+  title: string;
+  amount: string;
+  type: "positive" | "negative";
+  category: Category;
+  date: String;
+}
+
+interface Props {
+  data: TransactionCardProps;
+}
+
+export function TransactionCard({ data }: Props) {
   return (
     <Container>
       <Header>
-        <Title>Desenvolvimento de site</Title>
-        <Amount>R$ 12.000,00</Amount>
+        <Title>{data.title}</Title>
+        <Amount type={data.type}>
+          {data.type === "negative" && "-"} {data.amount}
+        </Amount>
       </Header>
       <Content>
         <Category>
-          <Icon name="dollar-sign"/>
-          <CategoryName>Vendas</CategoryName>
+          <Icon name={data.category.icon} />
+          <CategoryName>{data.category.name}</CategoryName>
         </Category>
-        <Date>13/04/2023</Date>
+        <Date>{data.date}</Date>
       </Content>
     </Container>
   );
