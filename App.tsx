@@ -1,4 +1,3 @@
-
 import React, { useCallback, useEffect, useState } from "react";
 import * as SplashScreen from "expo-splash-screen";
 import { Dashboard } from "./src/screens/Dashboard";
@@ -10,7 +9,7 @@ import {
   Poppins_500Medium,
   Poppins_700Bold,
 } from "@expo-google-fonts/poppins";
-import { Register } from "./src/screens/Register";
+import { CategorySelect } from "./src/screens/CategorySelect";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -28,7 +27,7 @@ export default function App() {
     prepare();
   }, []);
 
- /* const onLayoutRootView = useCallback(async () => {
+  /* const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded) {
       await SplashScreen.hideAsync();
     }
@@ -40,7 +39,15 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Register />
+      <CategorySelect
+        category={""}
+        setCategory={function (category: Category): void {
+          throw new Error("Function not implemented.");
+        }}
+        closeSelectCategory={function (): void {
+          throw new Error("Function not implemented.");
+        }}
+      />
     </ThemeProvider>
   );
 }
