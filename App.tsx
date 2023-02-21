@@ -10,6 +10,7 @@ import {
   Poppins_700Bold,
 } from "@expo-google-fonts/poppins";
 import { CategorySelect } from "./src/screens/CategorySelect";
+import { Register } from "./src/screens/Register";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -39,15 +40,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <CategorySelect
-        category={""}
-        setCategory={function (category: Category): void {
-          throw new Error("Function not implemented.");
-        }}
-        closeSelectCategory={function (): void {
-          throw new Error("Function not implemented.");
-        }}
-      />
+      <Register />
     </ThemeProvider>
   );
 }

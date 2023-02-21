@@ -8,7 +8,7 @@ import {
   Name,
   Separator,
   Footer,
-  ButtonText
+  ButtonText,
 } from "./styles";
 import { categories } from "../../utils/categories";
 import { Button } from "../../components/Forms/Button";
@@ -19,7 +19,7 @@ interface Category {
 }
 
 interface Props {
-  category: string;
+  category: Category;
   setCategory: (category: Category) => void;
   closeSelectCategory: () => void;
 }
@@ -29,6 +29,10 @@ export function CategorySelect({
   closeSelectCategory,
   setCategory,
 }: Props) {
+  function handleCategorySelect(category: Category) {
+    setCategory(category);
+  }
+
   return (
     <Container>
       <Header>
@@ -40,7 +44,10 @@ export function CategorySelect({
         keyExtractor={(item) => item.key}
         renderItem={({ item }) => (
           <>
-            <Category>
+            <Category
+              onPress={() => handleCategorySelect(item)}
+              isActive={category.key === item.key}
+            >
               <Icon name={item.icon} />
               <Name>{item.name}</Name>
             </Category>
@@ -49,8 +56,7 @@ export function CategorySelect({
         ItemSeparatorComponent={() => <Separator />}
       ></FlatList>
       <Footer>
-        <Button title={"Selecionar"}>
-        </Button>
+        <Button title={"Selecionar"} onPress={closeSelectCategory}></Button>
       </Footer>
     </Container>
   );
