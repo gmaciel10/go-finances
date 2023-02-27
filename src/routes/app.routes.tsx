@@ -42,11 +42,7 @@ export function AppRoutes() {
         component={Register}
         options={{
           tabBarIcon: ({ size, color }) => (
-            <MaterialIcons
-              name="attach-money"
-              size={size}
-              color={color}
-            />
+            <MaterialIcons name="attach-money" size={size} color={color} />
           ),
         }}
       />
@@ -55,11 +51,7 @@ export function AppRoutes() {
         component={Register}
         options={{
           tabBarIcon: ({ size, color }) => (
-            <MaterialIcons
-              name="pie-chart"
-              size={size}
-              color={color}
-            />
+            <MaterialIcons name="pie-chart" size={size} color={color} />
           ),
         }}
       />

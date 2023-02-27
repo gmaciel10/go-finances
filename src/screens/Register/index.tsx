@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "../../components/Forms/Button";
 import { Modal, TouchableWithoutFeedback, Keyboard, Alert } from "react-native";
 import { CategorySelectButton } from "../../components/Forms/CategorySelectButton";
 import { TransactionTypeButton } from "../../components/Forms/TransactionTypeButton";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Control, FieldValues, useForm } from "react-hook-form";
 import {
   Container,
@@ -37,6 +38,7 @@ export function Register() {
     key: "category",
     name: "category",
   });
+  const dataKey = "@gofinances:transactions";
 
   const {
     control,
@@ -46,7 +48,7 @@ export function Register() {
     resolver: yupResolver(schema),
   });
 
-  const handleRegister = (form: FormData) => {
+  async function handleRegister(form: FormData) {
     if (!transactionType) {
       return Alert.alert("Selecione o tipo da transação");
     }
@@ -55,15 +57,25 @@ export function Register() {
       return Alert.alert("Selecione a categoria");
     }
 
-    const data = {
+    const newTransaction = {
       name: form.name,
       amount: form.amount,
       transactionType,
       category: category.key,
     };
 
-    console.log(data);
-  };
+    try {
+      const data = await AsyncStorage.getItem(dataKey);
+      const currentData = data ? JSON.parse(data) : [];
+
+      const dataFormatted = [...currentData, newTransaction];
+
+      await AsyncStorage.setItem(dataKey, JSON.stringify(dataFormatted));
+    } catch (error) {
+      console.log(error);
+      Alert.alert("Não foi possível salvar.");
+    }
+  }
 
   function handleTransactionsTypeSelect(type: "up" | "down") {
     setTransactionType(type);
@@ -76,6 +88,20 @@ export function Register() {
   function handleCloseSelectCategoryModal() {
     setCategoryModalOpen(false);
   }
+
+  useEffect(() => {
+    /*async function loadData() {
+      const data = await AsyncStorage.getItem(dataKey);
+      console.log(JSON.parse(data!));
+    }
+    loadData();*/
+    async function removeAll() {
+      await AsyncStorage.removeItem(dataKey);
+    }
+
+    removeAll();
+  }, []);
+
   const formControll = control as unknown as Control<FieldValues, any>;
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>

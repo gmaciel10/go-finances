@@ -1,18 +1,17 @@
-import React, { useCallback, useEffect, useState } from "react";
+import "react-native-gesture-handler";
+import React, { useEffect, useState } from "react";
 import * as SplashScreen from "expo-splash-screen";
-import { Dashboard } from "./src/screens/Dashboard";
 import { ThemeProvider } from "styled-components";
 import theme from "./src/global/styles/theme";
-import {NavigationContainer} from "@react-navigation/native"
+import { NavigationContainer } from "@react-navigation/native";
 import {
   useFonts,
   Poppins_400Regular,
   Poppins_500Medium,
   Poppins_700Bold,
 } from "@expo-google-fonts/poppins";
-import { CategorySelect } from "./src/screens/CategorySelect";
-import { Register } from "./src/screens/Register";
 import { AppRoutes } from "./src/routes/app.routes";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -42,9 +41,16 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <NavigationContainer>
-        <AppRoutes />
-      </NavigationContainer>
+      <GestureHandlerRootView
+        style={{
+          flex: 1,
+          backgroundColor: theme.colors.background,
+        }}
+      >
+        <NavigationContainer>
+          <AppRoutes />
+        </NavigationContainer>
+      </GestureHandlerRootView>
     </ThemeProvider>
   );
 }

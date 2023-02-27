@@ -12,10 +12,11 @@ import {
   Transactions,
   Title,
   TransactionList,
+  LogoutButton,
 } from "./styles";
 import { HighlightCard } from "../../components/HighlightCard";
 import { HighlightCards } from "../../components/HighlightCard/styles";
-import { FlatList, FlatListProps, StatusBar } from "react-native";
+import { StatusBar } from "react-native";
 import theme from "../../global/styles/theme";
 import {
   TransactionCard,
@@ -74,7 +75,9 @@ export function Dashboard() {
               <UserName>Guilherme</UserName>
             </User>
           </UserInfo>
-          <Icon name="power" />
+          <LogoutButton onPress={() => {}}>
+            <Icon name="power" />
+          </LogoutButton>
         </UserWrapper>
       </Header>
       <HighlightCards>

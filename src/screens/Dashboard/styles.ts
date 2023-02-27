@@ -4,6 +4,7 @@ import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { Feather } from "@expo/vector-icons";
 import { getBottomSpace } from "react-native-iphone-x-helper";
 import { DataListProps } from ".";
+import { BorderlessButton } from "react-native-gesture-handler";
 
 export const Container = styled.View`
   flex: 1;
@@ -52,6 +53,8 @@ export const Icon = styled(Feather)`
   font-size: ${RFValue(24)}px;
 `;
 
+export const LogoutButton = styled(BorderlessButton)``;
+
 export const Transactions = styled.View`
   flex: 1;
   padding: 0 ${RFValue(24)}px;
@@ -71,4 +74,4 @@ export const TransactionList = styled(
   contentContainerStyle: {
     paddingBottom: getBottomSpace(),
   },
-})`` as React.ComponentType as new <DataListProps>() => FlatList<DataListProps>;;
+})`` as React.ComponentType as new <DataListProps>() => FlatList<DataListProps>;
