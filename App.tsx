@@ -6,6 +6,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { ThemeProvider } from "styled-components";
 import theme from "./src/global/styles/theme";
 import { NavigationContainer } from "@react-navigation/native";
+import { StatusBar } from "react-native";
 import {
   useFonts,
   Poppins_400Regular,
@@ -50,6 +51,7 @@ export default function App() {
         }}
       >
         <NavigationContainer>
+          <StatusBar barStyle="light-content" />
           <AppRoutes />
         </NavigationContainer>
       </GestureHandlerRootView>
