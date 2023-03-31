@@ -7,6 +7,7 @@ import { ThemeProvider } from "styled-components";
 import theme from "./src/global/styles/theme";
 import { NavigationContainer } from "@react-navigation/native";
 import { StatusBar } from "react-native";
+import { SignIn } from "./src/screens/SignIn/index";
 import {
   useFonts,
   Poppins_400Regular,
@@ -52,7 +53,7 @@ export default function App() {
       >
         <NavigationContainer>
           <StatusBar barStyle="light-content" />
-          <AppRoutes />
+          <SignIn />
         </NavigationContainer>
       </GestureHandlerRootView>
     </ThemeProvider>
