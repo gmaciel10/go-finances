@@ -16,6 +16,7 @@ import {
 } from "@expo-google-fonts/poppins";
 import { AppRoutes } from "./src/routes/app.routes";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { AuthProvider } from "./src/hooks/auth";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -53,7 +54,9 @@ export default function App() {
       >
         <NavigationContainer>
           <StatusBar barStyle="light-content" />
-          <SignIn />
+          <AuthProvider>
+            <SignIn />
+          </AuthProvider>
         </NavigationContainer>
       </GestureHandlerRootView>
     </ThemeProvider>
